@@ -127,7 +127,13 @@ class b01110011_recaptcha extends CModule
      */
     public function InstallEvents()
     {
-        // EventManager::getInstance()->registerEventHandler($this->MODULE_ID, 'TestEvent', $this->MODULE_ID, '\Namespace\Event', 'eventHandler');
+        // $EventManager = EventManager::getInstance();
+
+        // проверка формы
+        // $EventManager->registerEventHandler('main', 'OnBeforeProlog', $this->MODULE_ID, 'GoogleCaptcha', 'checkForm');
+
+        // инициализация js
+        // $EventManager->registerEventHandler('main', 'OnEpilog', $this->MODULE_ID, 'GoogleCaptcha', 'initJS');
     }
     
     /**
@@ -135,7 +141,13 @@ class b01110011_recaptcha extends CModule
      */
     public function UnInstallEvents()
     {
-        // EventManager::getInstance()->unRegisterEventHandler($this->MODULE_ID, 'TestEvent', $this->MODULE_ID, '\Namespace\Event', 'eventHandler');
+        // $EventManager = EventManager::getInstance();
+
+        // проверка формы
+        // $EventManager->unRegisterEventHandler('main', 'OnBeforeProlog', $this->MODULE_ID, 'GoogleCaptcha', 'checkForm');
+
+        // инициализация js
+        // $EventManager->unRegisterEventHandler('main', 'OnEpilog', $this->MODULE_ID, 'GoogleCaptcha', 'initJS');
     }
 
     /**
