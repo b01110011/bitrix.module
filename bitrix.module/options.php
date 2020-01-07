@@ -98,8 +98,8 @@ $tabControl = new CAdminTabControl('tabControl', $aTabs);
     require_once $_SERVER['DOCUMENT_ROOT'] .'/bitrix/modules/main/admin/group_rights.php';
     ?>
 
-    <input type="submit" name="Update" value="<?=Log::getMessage('MAIN_SAVE')?>">
-    <input type="submit" name="reset" value="<?=Log::getMessage('MAIN_RESET')?>">
+    <input type="submit" name="Update" value="<?=Loc::getMessage('MAIN_SAVE')?>">
+    <input type="submit" name="reset" value="<?=Loc::getMessage('MAIN_RESET')?>">
     <?=bitrix_sessid_post()?>
 </form>
 <? $tabControl->End(); ?>
