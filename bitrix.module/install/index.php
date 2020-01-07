@@ -129,7 +129,7 @@ class b01110011_recaptcha extends CModule
     {
         // $EventManager = EventManager::getInstance();
 
-        // проверка формы
+        // проверка на спам
         // $EventManager->registerEventHandler('main', 'OnBeforeProlog', $this->MODULE_ID, 'GoogleCaptcha', 'initCheckSpam');
 
         // инициализация js
@@ -143,7 +143,7 @@ class b01110011_recaptcha extends CModule
     {
         // $EventManager = EventManager::getInstance();
 
-        // проверка формы
+        // проверка на спам
         // $EventManager->unRegisterEventHandler('main', 'OnBeforeProlog', $this->MODULE_ID, 'GoogleCaptcha', 'initCheckSpam');
 
         // инициализация js
