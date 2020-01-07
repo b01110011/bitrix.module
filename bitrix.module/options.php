@@ -91,15 +91,15 @@ $tabControl = new CAdminTabControl('tabControl', $aTabs);
             __AdmSettingsDrawList($module_id, $aTab['OPTIONS']);
         }
     }
-
-    $tabControl->BeginNextTab();
-    $tabControl->Buttons();
-
-    require_once $_SERVER['DOCUMENT_ROOT'] .'/bitrix/modules/main/admin/group_rights.php';
     ?>
 
+    <? $tabControl->BeginNextTab(); ?>
+    <? require_once $_SERVER['DOCUMENT_ROOT'] .'/bitrix/modules/main/admin/group_rights.php'; ?>
+
+    <? $tabControl->Buttons(); ?>
     <input type="submit" name="Update" value="<?=Loc::getMessage('MAIN_SAVE')?>">
-    <input type="submit" name="reset" value="<?=Loc::getMessage('MAIN_RESET')?>">
+    <input type="reset" name="reset" value="<?=Loc::getMessage('MAIN_RESET')?>">
+    
     <?=bitrix_sessid_post()?>
 </form>
 <? $tabControl->End(); ?>
