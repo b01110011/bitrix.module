@@ -57,6 +57,8 @@ class b01110011_recaptcha extends CModule
 
     public function DoUninstall()
     {
+        global $APPLICATION;
+
         $request = Application::getInstance()->getContext()->getRequest();
 
         switch ($request['step'])
@@ -133,7 +135,7 @@ class b01110011_recaptcha extends CModule
         // $EventManager->registerEventHandler('main', 'OnBeforeProlog', $this->MODULE_ID, 'GoogleCaptcha', 'initCheckSpam');
 
         // инициализация js
-        // $EventManager->registerEventHandler('main', 'OnEpilog', $this->MODULE_ID, 'GoogleCaptcha', 'initJS');
+        // $EventManager->registerEventHandler('main', 'OnProlog', $this->MODULE_ID, 'GoogleCaptcha', 'initJS');
     }
     
     /**
@@ -147,7 +149,7 @@ class b01110011_recaptcha extends CModule
         // $EventManager->unRegisterEventHandler('main', 'OnBeforeProlog', $this->MODULE_ID, 'GoogleCaptcha', 'initCheckSpam');
 
         // инициализация js
-        // $EventManager->unRegisterEventHandler('main', 'OnEpilog', $this->MODULE_ID, 'GoogleCaptcha', 'initJS');
+        // $EventManager->unRegisterEventHandler('main', 'OnProlog', $this->MODULE_ID, 'GoogleCaptcha', 'initJS');
     }
 
     /**
@@ -158,7 +160,19 @@ class b01110011_recaptcha extends CModule
         // копируем компоненты
         if (Directory::isDirectoryExists($path = $this->GetPath() .'/install/components'))
         {
-            CopyDirFiles($path, $_SERVER['DOCUMENT_ROOT'] .'/bitrix/components', true, true);
+            CopyDirFiles($path, Application::getDocumentRoot() .'/bitrix/components', true, true);
+        }
+
+        // копируем скрипты
+        if (Directory::isDirectoryExists($path = $this->GetPath() .'/install/assets/js'))
+        {
+            CopyDirFiles($path, Application::getDocumentRoot() .'/bitrix/js/'. $this->MODULE_ID, true, true);
+        }
+
+        // копируем стили
+        if (Directory::isDirectoryExists($path = $this->GetPath() .'/install/assets/css'))
+        {
+            CopyDirFiles($path, Application::getDocumentRoot() .'/bitrix/css/'. $this->MODULE_ID, true, true);
         }
 
         // копируем админские файлы
@@ -172,7 +186,7 @@ class b01110011_recaptcha extends CModule
                 {
                     if (in_array($item, $exclusionFiles)) continue;
 
-                    copy($path .'/'. $item, $dest = $_SERVER['DOCUMENT_ROOT'] .'/bitrix/admin/'. $this->FILE_PREFIX . $item);
+                    copy($path .'/'. $item, $dest = Application::getDocumentRoot() .'/bitrix/admin/'. $this->FILE_PREFIX . $item);
 
                     // для замены айди модуля в файлах install/admin
                     if (file_exists($dest))
@@ -205,11 +219,23 @@ class b01110011_recaptcha extends CModule
                     if (in_array($item, $exclusionFiles)) continue;
                     if (!is_dir($path .'/'. $item)) continue;
 
-                    Directory::deleteDirectory($_SERVER['DOCUMENT_ROOT'] .'/bitrix/components/'. $item);
+                    Directory::deleteDirectory(Application::getDocumentRoot() .'/bitrix/components/'. $item);
                 }
 
                 closedir($dir);
             }
+        }
+
+        // удаляем скрипты
+        if (Directory::isDirectoryExists($path = $this->GetPath() .'/install/assets/js'))
+        {
+            Directory::deleteDirectory(Application::getDocumentRoot() .'/bitrix/js/'. $this->MODULE_ID);
+        }
+
+        // удаляем стили
+        if (Directory::isDirectoryExists($path = $this->GetPath() .'/install/assets/css'))
+        {
+            Directory::deleteDirectory(Application::getDocumentRoot() .'/bitrix/css/'. $this->MODULE_ID);
         }
 
         // удаляем админские файлы
@@ -223,7 +249,7 @@ class b01110011_recaptcha extends CModule
                 {
                     if (in_array($item, $exclusionFiles)) continue;
 
-                    File::deleteFile($_SERVER['DOCUMENT_ROOT'] .'/bitrix/admin/'. $this->FILE_PREFIX . $item);
+                    File::deleteFile(Application::getDocumentRoot() .'/bitrix/admin/'. $this->FILE_PREFIX . $item);
                 }
 
                 closedir($dir);
