@@ -9,18 +9,18 @@ if ($ex = $APPLICATION->GetException())
     print CAdminMessage::ShowMessage(
     [
         'TYPE' => 'ERROR',
-        'MESSAGE' => Log::getMessage('MOD_INST_ERR'),
+        'MESSAGE' => Loc::getMessage('MOD_INST_ERR'),
         'DETAILS' => $ex->GetString(),
         'HTML' => true
     ]);
 }
 else
 {
-    CAdminMessage::ShowNote(Log::getMessage('MOD_INST_OK'));
+    CAdminMessage::ShowNote(Loc::getMessage('MOD_INST_OK'));
 }
 ?>
 
 <form action="<?=$APPLICATION->GetCurPage()?>">
     <input type="hidden" name="lang" value="<?=LANGUAGE_ID?>">
-    <input type="submit" value="<?=Log::getMessage('MOD_BACK')?>">
+    <input type="submit" value="<?=Loc::getMessage('MOD_BACK')?>">
 </form>

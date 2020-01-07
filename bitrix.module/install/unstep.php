@@ -13,11 +13,11 @@ if (!check_bitrix_sessid()) return;
     <input type="hidden" name="id" value="<?=bx_module_id()?>">
     <input type="hidden" name="uninstall" value="Y">
     <input type="hidden" name="step" value="2">
-    <?=CAdminMessage::ShowMessage(Log::getMessage('MOD_UNINST_WARN'))?>
-    <p><?=Log::getMessage('MOD_UNINST_SAVE')?></p>
+    <?=CAdminMessage::ShowMessage(Loc::getMessage('MOD_UNINST_WARN'))?>
+    <p><?=Loc::getMessage('MOD_UNINST_SAVE')?></p>
     <p>
         <input type="checkbox" name="savedata" id="savedata" value="Y" checked>
-        <label for="savedata"><?=Log::getMessage('MOD_UNINST_SAVE_TABLES')?></label>
+        <label for="savedata"><?=Loc::getMessage('MOD_UNINST_SAVE_TABLES')?></label>
     </p>
-    <input type="submit" value="<?=Log::getMessage('MOD_UNINST_DEL')?>">
+    <input type="submit" value="<?=Loc::getMessage('MOD_UNINST_DEL')?>">
 </form>
