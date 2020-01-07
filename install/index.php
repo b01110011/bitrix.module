@@ -10,7 +10,7 @@ use Bitrix\Main\Config\Option;
 
 Loc::loadMessages(__FILE__);
 
-require_once '../helper.php';
+require_once __DIR__ .'/../helper.php';
 
 class b01110011_recaptcha extends CModule
 {

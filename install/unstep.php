@@ -2,7 +2,7 @@
 
 use Bitrix\Main\Localization\Loc;
 
-require_once '../helper.php';
+require_once __DIR__ .'/../helper.php';
 
 if (!check_bitrix_sessid()) return;
 ?>

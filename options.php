@@ -5,7 +5,7 @@ use Bitrix\Main\HttpApplication;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Loader;
 
-require_once 'helper.php';
+require_once __DIR__ .'/helper.php';
 
 $module_id = bx_module_id();
 $LOC = bx_loc_prefix();

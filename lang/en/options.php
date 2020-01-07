@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../helper.php';
+require_once __DIR__ .'/../../helper.php';
 $LOC = bx_loc_prefix();
 
 $MESS[$LOC .'TAB_SETTINGS'] = 'Settings';
