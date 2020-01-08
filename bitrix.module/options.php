@@ -16,7 +16,7 @@ Loc::loadMessages(__FILE__);
 // проверка прав на настройки модуля
 if ($APPLICATION->GetGroupRight($module_id) < 'S')
 {
-    $APPLICATION->AuthForm(Loc::getMessage('ACCESS DENIED'));
+    $APPLICATION->AuthForm(Loc::getMessage('ACCESS_DENIED'));
 }
 
 Loader::includeModule($module_id);
