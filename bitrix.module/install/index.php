@@ -14,6 +14,14 @@ require_once __DIR__ .'/../helper.php';
 
 class b01110011_recaptcha extends CModule
 {
+    var $MODULE_ID = 'b01110011.recaptcha';
+	var $MODULE_VERSION;
+	var $MODULE_VERSION_DATE;
+	var $MODULE_NAME;
+	var $MODULE_DESCRIPTION;
+	var $PARTNER_NAME;
+	var $PARTNER_URI;
+
     protected $LOC_PREFIX;
     protected $FILE_PREFIX;
 
@@ -25,7 +33,6 @@ class b01110011_recaptcha extends CModule
         $this->LOC_PREFIX = bx_loc_prefix();
         $this->FILE_PREFIX = bx_file_prefix();
 
-        $this->MODULE_ID = bx_module_id();
         $this->MODULE_VERSION = $arModuleVersion['VERSION'];
         $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
         $this->MODULE_NAME = Loc::getMessage($this->LOC_PREFIX .'MODULE_NAME');
